@@ -1,0 +1,40 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+int main() {
+ 
+// string first_string; 
+// string second_string; 
+// cin ends a white space 
+// getline ends at new line 
+// getline(cin, first_string);
+// getline(cin, secondString); 
+// getline can store multiple characters and white spaces
+ 
+string user1word; 
+string user2Guess; 
+string scrambled;
+ 
+cout << "User one enter first word" << endl;
+ 
+getline(cin, user1word);
+ 
+scrambled = user1word; 
+random_shuffle(scrambled.begin(), scrambled.end());
+ 
+cout << "The word scrambled is " << scrambled << endl; 
+cout << "User two guess word" << endl;
+ 
+getline(cin, user2Guess);
+ 
+if (user2Guess == user1word) { 
+cout << "Correct!" << endl; 
+}
+ 
+else { 
+cout << "Wrong! The correct word was: " << user1word << endl; 
+}
+ 
+return 0;
+}

@@ -1,0 +1,37 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <math.h>
+using namespace std;
+int main() {
+ 
+double A; 
+double X; 
+double Y;
+ 
+double sqrtA; 
+double powXy;
+double logB; 
+double absDiff;
+ 
+cout << "Value for A" << endl; 
+cin >> A; 
+ 
+cout << "Value for x" << endl; 
+cin >> X;
+ 
+cout << "Value for y" << endl 
+cin >> Y;
+ 
+sqrtA = sqrt(A); 
+powXy = pow(X, Y); 
+double result = log(X) 
+absDiff = fabs(X-Y);
+ 
+cout << "Square root of A is: " << sqrtA << endl; 
+cout << "X raised to the power of Y is: " << powXy << endl 
+cout << "The natural logarithm of B is: " << result << endl;
+cout << "The absolute value of X & Y is: " << absDiff << endl;
+ 
+ 
+return 0;

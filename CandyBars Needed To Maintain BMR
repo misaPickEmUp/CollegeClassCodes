@@ -1,0 +1,58 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+double BMR;
+double weight_in_pounds;
+double height_in_inches;
+double age_in_years;
+double height_in_feet;
+char sex;
+char run_again;
+double candy;
+
+do
+{
+
+// user inputs
+
+cout << "Enter your weight in pounds." << endl;
+cin >> weight_in_pounds;
+
+cout << "Enter your height in feet and inches (use the format 'feet inches', e.g. '5 10' 
+for 5 feet and 10 inches)." << endl;
+cin >> height_in_feet;
+cin >> height_in_inches;
+
+cout << "Enter your age in years." << endl;
+cin >> age_in_years;
+
+cout << "Enter M for male or F for female" << endl;
+cin >> sex;
+
+height_in_inches = height_in_inches + (height_in_feet * 12);
+if (sex == 'F') {
+
+BMR = 655 + (4.3 * weight_in_pounds) + (4.7 * height_in_inches) -
+(4.7 * age_in_years);
+candy = BMR / 230;
+cout << "You need to eat " << candy << " candy bars to maintain 
+your weight." << endl;
+}
+
+else if (sex == 'M') {
+BMR = 66 + (6.3 * weight_in_pounds) + (12.9 * height_in_inches) -
+(6.8 * age_in_years);
+candy = BMR / 230;
+cout << "You need to eat " << candy << " candy bars to maintain 
+your weight." << endl;
+}
+
+cout << "Do you want to run the program again? Y or y" << endl;
+cin >> run_again;
+
+} while (run_again == 'Y' || run_again == 'y');
+
+return 0;
+}

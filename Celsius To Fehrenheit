@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+int fahrenheit;
+double celsius = 100;
+
+do 
+{
+celsius--;
+fahrenheit = (9 * celsius) / 5 + 32;
+cout << celsius << " degrees Celsius is equal to " << fahrenheit << " degrees Fahrenheit." << endl;
+}
+
+while (celsius != fahrenheit);
+
+return 0;
+}

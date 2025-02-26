@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+int sphere_radius;
+int buoyant_force;
+double fluid_weight = 62.4;
+int object_weight;
+double volume;
+
+cout << "Enter sphere radius, in feet:" << endl;
+cin >> sphere_radius;
+
+cout << "Enter object weight, in feet:" << endl;
+cin >> object_weight;
+
+volume = pow(sphere_radius, 3) * (4 / 3)* 3.14159265359;
+buoyant_force = volume * fluid_weight;
+
+if (buoyant_force >= object_weight)
+{
+cout << "Sphere will float";
+}
+
+else
+{
+cout << "Sphere will sink";
+}
+
+return 0;
+}

@@ -1,0 +1,26 @@
+
+#include <iostream>
+using namespace std;
+int main() {
+ 
+int numberOne; 
+int numberTwo; 
+int total;
+ 
+cout << "Please input number one: ";
+cin >> numberOne;
+ 
+cout << "Please input number two: "; 
+cin >> numberTwo;
+ 
+total = numberOne+numberTwo; 
+cout << "Adding your numbers equals " << total << endl;
+ 
+total = numberOne-numberTwo; 
+cout << "Subtracting your numbers equals " << total << endl;
+ 
+total = numberOne*numberTwo; 
+cout << "Multiplying your numbers equal " << total;
+ 
+return 0;
+}

@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+int main() {
+ 
+string gender;
+int age;
+int weight;
+int heartrate;
+int time;
+ 
+cout << "Please specify the gender, type 'M' for Man or 'W' for woman." << endl;
+cin >> gender;
+// prompt user for everything
+ 
+cout << "Enter age" << endl; 
+cin >> age;
+ 
+cout << "Enter weight" << endl;
+cin >> weight;
+ 
+cout << "Enter heartrate" << endl; 
+cin >> heartrate;
+ 
+cout << "Enter time" << endl;
+cin >> time;
+//condition statement
+ 
+if (gender == "M") { 
+cout << "Calories = " << ((age*.2017)+(weight*.09036)+(heartrate*.6309) - 55.0969*time/4.184) << endl; 
+}
+ 
+else if (gender == "W") {
+cout << "Calories = " << ((age*.074)+(weight*.05741)+(heartrate*.4472) - 20.4022)*time/4.184 << endl; 
+}
+
+return 0;
+}

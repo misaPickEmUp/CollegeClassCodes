@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+// variables
+
+string instructor_name;
+string food;
+string color;
+string adjective;
+string animal; 
+string number_100120;
+
+//user input
+
+cout << "Enter instructors name" << endl;
+cin >> instructor_name;
+
+cout << "Enter food name" << endl;
+cin >> food;
+
+cout << "Enter color name" << endl;
+cin >> color;
+
+cout << "Enter number between 100-120 " << endl;
+cin >> number_100120;
+
+cout << "Enter a adjective" << endl;
+cin >> adjective;
+
+cout << "Enter animal name" << endl;
+cin >> animal; 
+cout << " " << endl;
+
+// text output to screen
+
+cout << "Dear " << instructor_name << endl;
+cout << "I am sorry that i am unable to turn in my homework at this time. First," << endl;
+cout << "I ate a rotten " << food << ",which made me turn " << color << "and extremly ill. i" << endl;
+cout << "came down with a fever of " << number_100120 << ". Next, my " << adjective << "pet" <<
+endl;
+
+cout << animal << " must have smelled the remains of the " << food << " on my homework," <<
+endl;
+
+cout << "because he ate it. I am currently rewriting my homework and hope you" << endl;
+cout << "will accept it late." << endl;
+cout << " " << endl;
+cout << "Sincerely, " << endl;
+cout << "Misael Acevedo" << endl;
+
+return 0;
+}

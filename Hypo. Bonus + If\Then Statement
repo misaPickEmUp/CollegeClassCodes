@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+double salary;
+double bonus;
+
+// input the salary
+
+cout << "enter your salary: ";
+cin >> salary;
+
+//check salary range and calculate the bonus
+
+if (salary >= 70000) {
+bonus = salary * 0.15; // 15% if salary is 70000 or more
+cout << "You are eligible for a large bonus of: $" << bonus << endl;
+}
+
+else if (salary >= 50000) {
+bonus = salary * 0.1; // 10% bonus if salary is between 50,000 and 69,999
+cout << "You are eligible for a medium bonus of: $" << bonus << endl;
+}
+
+else {
+bonus = salary * 0.05; // 5% bonus if salary is below 50,000
+cout << "Your are eligible for a small bonus of: $" << bonus << endl;
+}
+
+return 0;
+}

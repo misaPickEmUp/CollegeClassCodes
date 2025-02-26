@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+int hourly_wage; //underscore
+int workHoursPerWeek; //camel case
+int annualSalary;
+char ans;
+
+do
+{ 
+
+//TODO: declate the initialize variable workWeeksPerYear , then replace the 50's below
+hourly_wage = 20;
+workHoursPerWeek = 40;
+annualSalary = hourly_wage * workHoursPerWeek * 50;
+
+cout << "Annual salary is: ";
+cout << annualSalary << endl;
+
+cout << "Do you want to run program again?" << endl;
+cin >> ans;
+
+} while(ans == 'Y' || ans =='y');
+
+return 0;
+}

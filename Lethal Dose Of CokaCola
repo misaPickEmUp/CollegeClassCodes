@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+const double CONCENTRATION = .001; // 1/10 of 1 percent
+const double CAN_WEIGHT = 350;
+const double GRAMS_SWEETNER_PER_CAN = CAN_WEIGHT * CONCENTRATION; // units of grams/can
+
+int main() {
+
+double weightofMouse;
+double lethalDoseMouse;
+double weightOfDieter;
+char ans;
+double lethalDoseDieter;
+double cans;
+
+do
+{ 
+
+cout << "Enter the weight of the mouse in grams" << endl;
+cin >> weightofMouse;
+
+cout << "Enter the lethal for the mouse in grams" << endl;
+cin >> lethalDoseMouse;
+
+cout << "Enter the desired weight of the dieter, in grams" << endl;
+cin >> weightOfDieter;
+
+lethalDoseDieter = lethalDoseMouse * (weightOfDieter/weightofMouse);
+
+cout << "For these parameters: " << endl;
+cout << "Mouse weight: " << weightofMouse << endl;
+cout << "Lethal dose for the mouse: " << lethalDoseMouse << endl;
+cout << "Dieter weight: " << weightOfDieter << endl;
+cout << "The lethal dose in grams of the sweetener is: "<< lethalDoseDieter << endl;
+
+cans = lethalDoseDieter/GRAMS_SWEETNER_PER_CAN;
+cout << "Lethal number of cans of pop: " << cans << endl;
+
+cout << "Do you want to run program again?" << endl;
+cin >> ans;
+
+} while(ans == 'Y' || ans =='y');
+
+return 0;
+}

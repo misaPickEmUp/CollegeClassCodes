@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main() {
+ 
+int quarters; 
+int dimes; 
+int nickels; 
+int total;
+  
+//input statement
+ 
+cout << "Enter number of quarters" << endl; 
+cin >> quarters;
+ 
+cout << "Enter number of dimes." << endl; 
+cin >> dimes;
+
+cout << "Enter number of nickels." << endl; 
+cin >> nickels;
+ 
+//processing statement
+ 
+total = (quarters*25) + (dimes*10) + (nickels*5);
+  
+//output statements 
+ 
+cout << "The monetary value of your coins is "; 
+cout << total; 
+cout << " cents" << endl;
+ 
+return 0;
+}

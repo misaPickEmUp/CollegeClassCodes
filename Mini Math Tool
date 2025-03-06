@@ -1,0 +1,136 @@
+#include <iostream>
+#include<cmath>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 == 0 || num % 3 == 0) return false;
+    
+    for (int i = 5; i * i <= num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0)
+            return false;
+    }
+    return true;
+}
+long long factorial_iterative(int n) {
+    if (n < 0) {
+        return -1; // Factorial is not defined for negative numbers
+    }
+    long long result = 1;
+    for (int i = 2; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+int main (){
+    int user_choice;
+    cout << "Menu: \n";
+    cout << "1. Print a Sequence of Number\n";
+    cout << "2. Calculate Factorial of a Number\n";
+    cout << "3. Display a Multiplication Table\n";
+    cout << "4. Prime Number Check\n";
+    cout << "5. Exit\n";
+    cin >> user_choice;
+    
+    // list numbers
+    if(user_choice == 1){
+        cout << "Enter your choice (1-5): 1" << endl;
+        int end_input;
+          cout << "Enter a number: ";
+          cin >> end_input;
+        if(end_input > 0){
+            cout << "Sequence: ";
+            for (int i = 1; i <= end_input; ++i) {
+                cout << i << " ";
+            }
+            cout << endl;
+        }else{
+            cout << "Input cannot be negative or zero\n";
+        }
+          return 0;
+    }
+        
+        // factor input
+        else if (user_choice == 2){
+            cout << "Enter your choice (1-5): 2" << endl;
+            int factor_input;
+            cout << "Enter a integer: \n";
+            cin >> factor_input;
+            long long fact = factorial_iterative(factor_input);
+            if (fact == -1) {
+                cout << "Input cannot be negative" << endl;
+            } else {
+                cout << "The factorial of " << factor_input << " is " << fact << endl;
+            }
+            return 0;
+        }
+    
+    // multiplication table
+    else if (user_choice == 3){
+            cout << "Enter your choice (1-5): 3" << endl;
+            cout << "Enter number ";
+            int multi_input;
+            do {
+                cin >> multi_input;
+                int multi_one;
+                multi_one = multi_input * 1;
+                cout << multi_input << " * 1 = " << multi_input << endl;
+                int multi_two;
+                multi_two = multi_input * 2;
+                cout << multi_input << " * 2 = " << multi_two << endl;
+                int multi_three;
+                multi_three = multi_input * 3;
+                cout << multi_input << " * 3 = " << multi_three << endl;
+                int multi_four;
+                multi_four = multi_input * 4;
+                cout << multi_input << " * 4 = " << multi_four << endl;
+                int multi_five;
+                multi_five = multi_input * 5;
+                cout << multi_input << " * 5 = " << multi_five << endl;
+                int multi_six;
+                multi_six = multi_input * 6;
+                cout << multi_input << " * 6 = " << multi_six << endl;
+                int multi_seven;
+                multi_seven = multi_input * 7;
+                cout << multi_input << " * 7 = " << multi_seven << endl;
+                int multi_eight;
+                multi_eight = multi_input * 8;
+                cout << multi_input << " * 8 = " << multi_eight << endl;
+                int multi_nine;
+                multi_nine = multi_input * 9;
+                cout << multi_input << " * 9 = " << multi_nine << endl;
+                int multi_ten;
+                multi_ten = multi_input * 10;
+                cout << multi_input << " * 10 = " << multi_ten << endl;
+            } while (multi_input >= 1);
+        }
+    
+    //prime number check
+        else if (user_choice == 4){
+            cout << "Enter your choice (1-5): 4" << endl;
+            int input_prime;
+            cout << "Enter a number: \n";
+            cin >> input_prime;
+            
+            if (isPrime(input_prime)) {
+                cout << input_prime << " is a prime number." << endl;
+            } else {
+                cout << input_prime << " is not a prime number." << endl;
+            }
+            return 0;
+        }
+    
+    //Exit
+        else if (user_choice == 5){
+            cout << "Enter your choice (1-5): 5\n";
+            cout << "Exiting the program. Goodbye!\n";
+            return 0;
+            
+            //Wrong input
+        }else{
+            cout << user_choice << " not a valid input";
+        }
+    
+    return 0;
+}

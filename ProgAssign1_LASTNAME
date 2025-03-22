@@ -1,0 +1,100 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+
+int main(){
+    
+    string user_string;
+    cout << "Enter Email: \n";
+    cin >> user_string;
+    
+    string user_stringtwo = user_string;
+    string user_stringthree = user_string;
+    string linetwo = user_string.substr();
+    int user_choice;
+    auto itfound = find(user_string.begin(), user_string.end(), '@');
+    auto itfoundtwo = find(user_string.begin(), user_string.end(), '.');
+    char target = '@';
+    size_t pos = user_string.find(target);
+    
+    if (itfound == user_string.end() || itfoundtwo == user_string.end()){
+        cout << user_string << " is not a valid email\n";
+    }else{
+        cout << *itfound << " is a valid email\n";
+        
+//CODE STARTS // CODE STARTS//CODE STARTS // CODE STARTS//CODE STARTS // CODE STARTS//CODE STARTS // CODE STARTS//CODE STARTS // CODE STARTS//CODE STARTS // CODE STARTS//CODE STARTS
+        
+        cout << "What operation would you like to perform. Select a number to continue\n";
+        cout << "FIND(1) \nINSERT(2) \nREPLACE(3) \nTOGGLE_CASE(4) \nCOMPARE(5) \nEXIT(6) \n";
+        cin >> user_choice;
+        switch(user_choice){
+            case 1:
+                cout << "You selected 'FIND'\n";
+                cout << "'@' was located at 'pos' " << (distance(user_string.begin(), itfound) + 1) << "\n";
+                cout << "'.' was located at 'pos' " << (distance(user_string.begin(), itfoundtwo) + 1) << "\n";
+                break;
+            
+                
+                
+            case 2:
+                cout << "You selected 'INSERT'\n";
+                cout << "Original: " << user_string << "\n";
+                    user_string.insert(user_string.length(), " was the email submitted");
+                    cout << "Inserted: " << user_string << "\n";
+                    break;
+                break;
+                
+                
+                
+            case 3:
+                cout << "You selected 'REPLACE'\n";
+                cout << "Original: " << user_string << "\n";
+                if (pos != string::npos) {
+                    user_string.replace(pos, string :: npos, "@thisisnotarealdomain.com");
+                }
+                cout << "Replaced: " << user_string << "\n";
+                break;
+                
+                
+                
+            case 4:
+                cout << "You selected 'TOGGLE_CASE'\n";
+                cout << "Original: " << user_string << "\n";
+                transform(user_string.begin(), user_string.end(), user_string.begin(), ::tolower);
+                transform(user_stringtwo.begin(), user_stringtwo.end(), user_stringtwo.begin(), ::toupper);
+                cout << "Lowered: " << user_string << "\n";
+                cout << "Capatalized: " << user_stringtwo << "\n";
+
+                break;
+                
+            case 5:
+                cout << "You selected 'COMPARE'\n";
+                cout << "Original: " << user_string << "\n";
+                transform(user_stringtwo.begin(), user_stringtwo.end(), user_stringtwo.begin(), ::toupper);
+                transform(user_stringthree.begin(), user_stringthree.end(), user_stringthree.begin(), ::tolower);
+                if(user_string.compare(user_stringtwo) == 0){
+                    cout << user_string << " was written in uppercase.\n";
+                }else if(user_string.compare(user_stringthree) == 0){
+                    cout << user_string << " was written in lowercase.\n";
+                }else{
+                    cout << user_string << " was written in both upper and lower case.\n";
+                }
+                break;
+                
+            case 6:
+                cout << "You selected 'EXIT'\n";
+                cout << "Goodbye\n";
+                return 0;
+                break;
+                
+            default:
+                cout << "You did not select a valid option\n";
+                break;
+        }     
+        }
+    
+    return 0;
+}

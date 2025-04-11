@@ -1,0 +1,307 @@
+/*
+ Two-Person Battleship Game
+ Objective
+
+ This assignment is designed to give you practical experience working with 2-dimensional arrays by implementing a simplified two-player version of the classic game Battleship. You'll use arrays to represent game boards and manage turn-based gameplay.
+
+ Overview
+
+ You will write a program that simulates a terminal-based, two-player Battleship game on a 5x5 grid, where each player places a number of single-cell ships. Players will then take turns guessing the location of the opponent’s ships. The first player to sink all of the opponent’s ships wins.
+
+ Key Concepts Covered
+
+ 2D arrays for storing game state
+ Loops and conditional logic
+ Input/output handling
+ Modular program design
+
+
+ Game Rules
+
+ Each player has a 5x5 grid, labeled from row 0–4 and column 0–4.
+ Each player places 3 ships, each occupying a single cell.
+ Ships cannot overlap.
+ Players take turns guessing the location of their opponent's ships.
+ A player wins when they sink all 3 of their opponent's ships.
+ After each guess, the system will display whether it was a Hit, Miss, or Already guessed.
+
+
+ Input/Output
+
+ Prompt players to place 3 ships:
+ Player X, enter row and column for ship #1:
+ During turns, prompt:
+ Player X, enter row and column to fire:
+ Declare winner once all opponent ships are sunk:
+ Player X wins!
+//include PDF scan paper, make a visual represensation
+ 
+ 
+ */
+#include <iostream>
+using namespace std;
+
+int main(){
+
+//player one A&B array moves
+//initiallise, designate values. PLAYER ONE&TWO LOCATIONS
+    char playerOne[5][5];
+    char playerTwo[5][5];
+/*
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; i++){
+             playerOne[i][j] = 'o';
+             playerTwo[i][j] = 'o';
+        }
+    }
+*/
+
+        playerOne[0][0] = 'o';
+        playerOne[0][1] = 'o';
+        playerOne[0][2] = 'o';
+        playerOne[0][3] = 'o';
+        playerOne[0][4] = 'o';
+    playerOne[1][0] = 'o';
+    playerOne[1][1] = 'o';
+    playerOne[1][2] = 'o';
+    playerOne[1][3] = 'o';
+    playerOne[1][4] = 'o';
+        playerOne[2][0] = 'o';
+        playerOne[2][1] = 'o';
+        playerOne[2][2] = 'o';
+        playerOne[2][3] = 'o';
+        playerOne[2][4] = 'o';
+    playerOne[3][0] = 'o';
+    playerOne[3][1] = 'o';
+    playerOne[3][2] = 'o';
+    playerOne[3][3] = 'o';
+    playerOne[3][4] = 'o';
+        playerOne[4][0] = 'o';
+        playerOne[4][1] = 'o';
+        playerOne[4][2] = 'o';
+        playerOne[4][3] = 'o';
+        playerOne[4][4] = 'o';
+
+        playerTwo[0][0] = 'o';
+        playerTwo[0][1] = 'o';
+        playerTwo[0][2] = 'o';
+        playerTwo[0][3] = 'o';
+        playerTwo[0][4] = 'o';
+    playerTwo[1][0] = 'o';
+    playerTwo[1][1] = 'o';
+    playerTwo[1][2] = 'o';
+    playerTwo[1][3] = 'o';
+    playerTwo[1][4] = 'o';
+        playerTwo[2][0] = 'o';
+        playerTwo[2][1] = 'o';
+        playerTwo[2][2] = 'o';
+        playerTwo[2][3] = 'o';
+        playerTwo[2][4] = 'o';
+    playerTwo[3][0] = 'o';
+    playerTwo[3][1] = 'o';
+    playerTwo[3][2] = 'o';
+    playerTwo[3][3] = 'o';
+    playerTwo[3][4] = 'o';
+        playerTwo[4][0] = 'o';
+        playerTwo[4][1] = 'o';
+        playerTwo[4][2] = 'o';
+        playerTwo[4][3] = 'o';
+        playerTwo[4][4] = 'o';
+// Show game board to players:
+    cout << "Janky BattleShip\n" << "'o' = Empty Spaces \n'+' = Player One Spaces \n'-' = Player Two Spaces \n'*' = Missed Shot\n";
+    cout << "  1  2  3  4  5" << endl;
+    cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+    cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+    cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+    cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+    cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
+    
+// Player One Board Choice & Show Selected Moves
+    int one_movecounter = 0;
+    do{
+        char playerOne_let_board;
+        int playerOne_num_board;
+        cout << "Enter a Character followed by a Number: (Current Move: Player 1)" << endl;
+        cin >> playerOne_let_board >> playerOne_num_board;
+        if (playerOne_let_board == 'A'){
+            playerOne_let_board = 0;
+        }else if(playerOne_let_board == 'B'){
+            playerOne_let_board = 1;
+        }else if(playerOne_let_board == 'C'){
+            playerOne_let_board = 2;
+        }else if(playerOne_let_board == 'D'){
+            playerOne_let_board  = 3;
+        }else if(playerOne_let_board == 'E'){
+            playerOne_let_board = 4;
+        }else{
+            cout << playerOne_let_board << " is not a valid input\n";
+        }
+        if(playerOne[playerOne_let_board][playerOne_num_board-1] == 'o'){
+            playerOne[playerOne_let_board][playerOne_num_board-1] = '+';
+            one_movecounter++;
+        }else{
+            cout << "Oops that space is already taken! Try again.\n";
+        }
+              
+              
+
+        cout << "Player One: Ships are located at the following positions(Indicated by '+')\n";
+        cout << "  1  2  3  4  5" << endl;
+        cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+        cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+        cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+        cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+        cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
+    }while(one_movecounter < 3);
+
+    
+// Player Two Board Choice & Show Selected Moves
+    int two_movecounter = 0;
+    cout << "END OF PLAYER ONE SPACE SELECTION\n" << ".\n" << ".\n" << ".\n" << "Player Two: Ships are located at the following positions(Indicated by '-')\n";
+    cout << "  1  2  3  4  5" << endl;
+    cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+    cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+    cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+    cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+    cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
+    do{
+        char playerTwo_let_board;
+        int playerTwo_num_board;
+        cout << "Enter a Character followed by a Number: (Current Move: Player 2)" << endl;
+        cin >> playerTwo_let_board >> playerTwo_num_board;
+        if (playerTwo_let_board == 'A'){
+            playerTwo_let_board = 0;
+        }else if(playerTwo_let_board == 'B'){
+            playerTwo_let_board = 1;
+        }else if(playerTwo_let_board == 'C'){
+            playerTwo_let_board = 2;
+        }else if(playerTwo_let_board == 'D'){
+            playerTwo_let_board  = 3;
+        }else if(playerTwo_let_board == 'E'){
+            playerTwo_let_board = 4;
+        }else{
+            cout << playerTwo_let_board << " is not a valid input\n";
+        }
+        if(playerTwo[playerTwo_let_board][playerTwo_num_board-1] == 'o'){
+            playerTwo[playerTwo_let_board][playerTwo_num_board-1] = '-';
+            two_movecounter++;
+        }else{
+            cout << "Oops that space is already taken! Try again.\n";
+        }
+        
+        cout << "Player Two: Ships are located at the following positions(Indicated by '-'\n";
+        cout << "  1  2  3  4  5" << endl;
+        cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+        cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+        cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+        cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+        cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
+    }while(two_movecounter < 3);
+    
+
+/*Board gonna be a 5x5 grid
+   1  2  3  4  5
+ A ●  ●  ●  ●  ●
+ B ●  ●  ●  ●  ●
+ C ●  ●  ●  ●  ●
+ D ●  ●  ●  ●  ●
+ E ●  ●  ●  ●  ●
+ */
+//start of loop// start of looop//start of loop// start of looop//start of loop// start oflooop //start of loop// start of looop//start of loop// start of looop //start of loop// start of looop
+//players get to select moves
+    int playerOnehits = 0;
+    int playerTwohits = 0;
+    do{
+        //player one move agasint player
+        char playerOne_let_move;
+        int playerOne_num_move = 0;
+        cout << "TIME TO ATTACK! Current Move: Player 1" << endl;
+        cin >> playerOne_let_move >> playerOne_num_move;
+        if (playerOne_let_move == 'A'){
+            playerOne_let_move = 0;
+        }else if(playerOne_let_move == 'B'){
+            playerOne_let_move = 1;
+        }else if(playerOne_let_move == 'C'){
+            playerOne_let_move = 2;
+        }else if(playerOne_let_move == 'D'){
+            playerOne_let_move  = 3;
+        }else if(playerOne_let_move == 'E'){
+            playerOne_let_move = 4;
+        }else{
+            cout << playerOne_let_move << " is not a valid input\n";
+        }
+        
+        if(playerTwo[playerOne_let_move][playerOne_num_move-1] == '-'){//check if area is chosen
+            cout << "STRIKE! Critical hit captain\n";
+            playerTwo[playerOne_let_move][playerOne_num_move-1] = 'x'; // mark area for player 2
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+            cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+            cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+            cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+            cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
+            playerTwohits += 1;
+        }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == 'o'){
+            cout << "Oops you missed Captain! We'll get em next time\n";
+            playerTwo[playerOne_let_move][playerOne_num_move-1] = '*';
+        }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == '*'){
+            cout << "Oops looks like you aready shot that area! We'll get em next time\n";
+        }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == 'x'){
+            cout << "Oops you aready shot the ship in that area! Looks like you wasted your move We'll get em next time\n";
+        }
+        
+        //player two move agasint player
+        char playerTwo_let_move;
+        int playerTwo_num_move = 0;
+        cout << "TIME TO ATTACK! Current Move: Player 2" << endl;
+        cin >> playerTwo_let_move >> playerTwo_num_move;
+        if (playerTwo_let_move == 'A'){
+            playerTwo_let_move = 0;
+        }else if(playerTwo_let_move == 'B'){
+            playerTwo_let_move = 1;
+        }else if(playerTwo_let_move == 'C'){
+            playerTwo_let_move = 2;
+        }else if(playerTwo_let_move == 'D'){
+            playerTwo_let_move  = 3;
+        }else if(playerTwo_let_move == 'E'){
+            playerTwo_let_move = 4;
+        }else{
+            cout << playerTwo_let_move << " is not a valid input\n";
+        }
+        
+        if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == '+'){//check if area is chosen
+            cout << "STRIKE! Critical hit captain\n";
+            playerOne[playerTwo_let_move][playerTwo_num_move-1] = 'x'; // mark area for player 1
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+            cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+            cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+            cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+            cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
+            playerOnehits += 1;
+        }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == 'o'){
+            cout << "Oops you missed Captain! We'll get em next time\n";
+            playerOne[playerTwo_let_move][playerTwo_num_move-1] = '*';
+        }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == '*'){
+            cout << "Oops looks like you aready shot that area! We'll get em next time\n";
+        }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == 'x'){
+            cout << "Oops you aready shot the ship in that area! Looks like you wasted your move We'll get em next time\n";
+        }
+        
+
+        
+    }while(playerOnehits < 3 && playerTwohits < 3);
+
+    
+    // end message
+    if(playerOnehits == 2){
+        cout << "Congragulations Player 1 You won! You sure do live up to your name\n";
+        return 0;
+    }else{
+        cout << "Congragulations Player 2 You won! I guess you are the real Player one\n";
+        return 0;
+    }
+        
+    
+    return 0;
+}

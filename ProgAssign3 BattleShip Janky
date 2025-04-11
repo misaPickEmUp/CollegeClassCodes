@@ -243,11 +243,29 @@ int main(){
             playerTwohits += 1;
         }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == 'o'){
             cout << "Oops you missed Captain! We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+            cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+            cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+            cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+            cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
             playerTwo[playerOne_let_move][playerOne_num_move-1] = '*';
         }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == '*'){
             cout << "Oops looks like you aready shot that area! We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+            cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+            cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+            cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+            cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
         }else if(playerTwo[playerOne_let_move][playerOne_num_move-1] == 'x'){
             cout << "Oops you aready shot the ship in that area! Looks like you wasted your move We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerTwo[0][0] << "  " << playerTwo[0][1] << "  " << playerTwo[0][2] << "  " << playerTwo[0][3] << "  " << playerTwo[0][4] << endl;
+            cout << "B " << playerTwo[1][0] << "  " << playerTwo[1][1] << "  " << playerTwo[1][2] << "  " << playerTwo[1][3] << "  " << playerTwo[1][4] << endl;
+            cout << "C " << playerTwo[2][0] << "  " << playerTwo[2][1] << "  " << playerTwo[2][2] << "  " << playerTwo[2][3] << "  " << playerTwo[2][4] << endl;
+            cout << "D " << playerTwo[3][0] << "  " << playerTwo[3][1] << "  " << playerTwo[3][2] << "  " << playerTwo[3][3] << "  " << playerTwo[3][4] << endl;
+            cout << "E " << playerTwo[4][0] << "  " << playerTwo[4][1] << "  " << playerTwo[4][2] << "  " << playerTwo[4][3] << "  " << playerTwo[4][4] << endl;
         }
         
         //player two move agasint player
@@ -281,11 +299,29 @@ int main(){
             playerOnehits += 1;
         }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == 'o'){
             cout << "Oops you missed Captain! We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+            cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+            cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+            cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+            cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
             playerOne[playerTwo_let_move][playerTwo_num_move-1] = '*';
         }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == '*'){
             cout << "Oops looks like you aready shot that area! We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+            cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+            cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+            cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+            cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
         }else if(playerOne[playerTwo_let_move][playerTwo_num_move-1] == 'x'){
             cout << "Oops you aready shot the ship in that area! Looks like you wasted your move We'll get em next time\n";
+            cout << "  1  2  3  4  5" << endl;
+            cout << "A " << playerOne[0][0] << "  " << playerOne[0][1] << "  " << playerOne[0][2] << "  " << playerOne[0][3] << "  " << playerOne[0][4] << endl;
+            cout << "B " << playerOne[1][0] << "  " << playerOne[1][1] << "  " << playerOne[1][2] << "  " << playerOne[1][3] << "  " << playerOne[1][4] << endl;
+            cout << "C " << playerOne[2][0] << "  " << playerOne[2][1] << "  " << playerOne[2][2] << "  " << playerOne[2][3] << "  " << playerOne[2][4] << endl;
+            cout << "D " << playerOne[3][0] << "  " << playerOne[3][1] << "  " << playerOne[3][2] << "  " << playerOne[3][3] << "  " << playerOne[3][4] << endl;
+            cout << "E " << playerOne[4][0] << "  " << playerOne[4][1] << "  " << playerOne[4][2] << "  " << playerOne[4][3] << "  " << playerOne[4][4] << endl;
         }
         
 

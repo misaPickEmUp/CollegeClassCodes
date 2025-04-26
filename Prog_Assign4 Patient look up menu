@@ -51,6 +51,7 @@ int main(){
 }
 
 void displayMenu(){
+    cout << "--- Health Clinic Patient Queue System ---\n";
     cout << "1. Register a new patient\n";
     cout << "2. List all waiting patients\n";
     cout << "3. Call next patient\n";

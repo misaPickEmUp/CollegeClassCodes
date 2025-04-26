@@ -1,34 +1,7 @@
-/*
- Program Requirements:
-
- Your program should provide the receptionist with a menu-driven interface to perform the following operations:
- Exit the Program
-
- 
- Feel free to introduce additional helper functions as needed to improve clarity and structure.
-
-
-
- Data Structures:
-
- Use two parallel vector<string> containers:
-
- One to store patient names
- One to store their corresponding reasons for visit
- Ensure both vectors stay synchronized — i.e., the name at index i corresponds to the reason at index i.
-
-
-
- Input Validation:
-
- Do not allow empty names or reasons.
- Handle invalid menu options gracefully.
-
- */
-
 #include <iostream>
 #include <vector>
 #include <string>
+#include <limits>
 using namespace std;
 
 //prelist functions
@@ -40,35 +13,37 @@ void searchPatient(const vector<string>& names);
 
 //start main function
 int main(){
-//menu/  --- Health Clinic Patient Queue System ---
+    int userchoice = 0;
     vector<string> PNames;
     vector<string> PReasons;
-    int userchoice = 0;
-    displayMenu();
-    cin >> userchoice;
-    switch(userchoice){
-        case 1:
-            registerPatient(PNames, PReasons);
-        break;
-        case 2:
-            listPatients(PNames, PReasons);
-        break;
-        case 3:
-            callNextPatient(PNames, PReasons);
-        break;
-        case 4:
-            searchPatient(PNames);
-        break;
-        case 5:
-            cout << "You chose exit. Goodbye!";
-            return 0;
-        break;
-            
-        default:
-            cout << "That is not a valid input";
-        break;
-    }
-    
+    do{
+        //menu/  --- Health Clinic Patient Queue System ---
+        displayMenu();
+        cin >> userchoice;
+        switch(userchoice){
+            case 1:
+                registerPatient(PNames, PReasons);
+                break;
+            case 2:
+                listPatients(PNames, PReasons);
+                break;
+            case 3:
+                callNextPatient(PNames, PReasons);
+                break;
+            case 4:
+                searchPatient(PNames);
+                break;
+            case 5:
+                cout << "You chose exit. Goodbye!\n";
+                return 0;
+                break;
+                
+            default:
+                cout << "That is not a valid input.\n";
+                break;
+        }
+
+    }while(userchoice != 5);
     
     
     
@@ -84,31 +59,46 @@ void displayMenu(){
     cout << "Enter your choice: ";
 }
 void registerPatient(vector<string>& names, vector<string>& reasons){
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    string usernam;
     cout << "Enter your first and last name with a space inbetween\n";
-    string userchoice;
-    getline(cin, userchoice);
-    names.push_back(userchoice);
+    do{
+        getline(cin, usernam);
+        if(usernam.empty()){
+            cout << "Not a valid input. Try again.\n";
+        }
+    }while(usernam.empty());
+    names.push_back(usernam);
     
-    userchoice.clear();
+    string userres;
     cout << "Enter your reason for visiting today\n";
-    getline(cin, userchoice);
-    reasons.push_back(userchoice);
+    do{
+        getline(cin, userres);
+        if(userres.empty()){
+            cout << "Not a valid input. Try again.\n";
+        }
+    }while(userres.empty());
+    reasons.push_back(userres);
 // Register a New Patient
 // Prompt for patient’s full name and reason for visit.
 //  Add the patient to a queue (maintain order of arrival using a vector).
 }
 void listPatients(const vector<string>& names, const vector<string>& reasons){
-    cout << "The current patients waiting are: \n";
-    for(int i=0; i < names.size(); i++){
-        cout << "Patient: " << names.at(i) << endl;
-        cout << "Reason for visit: " << reasons.at(i) << endl;
+    if(names.size() > 0){
+        cout << "The current patients waiting are: \n";
+        for(int i=0; i < names.size(); i++){
+            cout << "(" << i+1 << ") " << "Patient: " << names.at(i) << endl;
+            cout << "(" << i+1 << ") " << "Reason for visit: " << reasons.at(i) << endl;
+        }}else{
+            cout << "There are no current patients.\n";
+        }
 //List All Waiting Patients
 //Display a numbered list of all patients currently waiting, showing name and reason for visit.
-}}
+}
 void callNextPatient(vector<string>& names, vector<string>& reasons){
     if(names.size() != 0){
-        cout << "Calling next patient: " << names.at(0) << ". Reason for visiting: " << reasons.at(0);
-        cout << "Patient: " << names.at(0) << " has been removed from the system.";
+        cout << "Calling next patient: " << names.at(0) << ".\nReason for visiting: " << reasons.at(0);
+        cout << "\nPatient: " << names.at(0) << " has been removed from the system.\n";
         names.erase(names.begin());
         reasons.erase(reasons.begin());
     }else{
@@ -119,6 +109,7 @@ void callNextPatient(vector<string>& names, vector<string>& reasons){
 //If no patients are waiting, display a message indicating so.
 }
 void searchPatient(const vector<string>& names){
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     string usercheck;
     cout << "Enter name for patient you would like to look for: \n";
     getline(cin, usercheck);
@@ -137,32 +128,3 @@ void searchPatient(const vector<string>& names){
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-/*
- Objective:
-
- Design and implement a modular C++ program using vectors that simulates a simple patient check-in system for a health clinic. The program will be used by the clinic’s receptionist to register new patients and manage the order in which they should be seen.
-
-
-
- Background:
-
- In a typical clinic, the receptionist is responsible for signing in patients and maintaining the queue of who is to be seen next by the doctor. Your task is to build a command-line interface that helps automate this process.
-
- This assignment will give you practice in:
-
- Modular program design using functions
- Use of vectors to manage dynamic lists
- Input validation and basic control structures
-
- */

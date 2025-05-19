@@ -3,77 +3,104 @@
 #include <thread>
 using namespace std;
 
-int main(){
-// ------------------ Assignment: Build a Text-Based Adventure Game ------------------
-//story frame work: a knight must accept his responsibility and fight a dragon
+int main() {
+    // ------------------ Assignment: Build a Text-Based Adventure Game ------------------
+    // title royal 40000k, 
+    //story frame work: a knight must accept his responsibility and fight a dragon
+	cout << "- -- --- ---- ---------ROYAL 40 000K!--------- ---- --- -- -\n";
     cout << "Introduction: You are a royal knight of the Imperial Guard. In recent times the kingdom has fallen victim to a terrible dragon. The homes and crops of your citizens have been oblitarated. It is your responsibility to SLAY the wild beast, and restore peace to your kingdom.\n";
-    
+
     char StartingInput;
-        cout << "What is your first move?\n";
-        cout << "(A) Gear up for BATTLE. The kingdom must be protected\n";
-        cout << "(B) Approach the Imperial General to get an analysis of the situation\n";
-        cout << "(C) Sneak into Royal chambers to asses current assets\n";
-        cin >> StartingInput;
-    if(StartingInput != 'A' && StartingInput != 'B' && StartingInput != 'C'){
-        do{
+    cout << "What is your first move?\n";
+    cout << "(A) Gear up for BATTLE. The kingdom must be protected\n";
+    cout << "(B) Approach the Imperial General to get an analysis of the situation\n";
+    cout << "(C) Sneak into Royal chambers to asses current assets\n";
+    cin >> StartingInput;
+    if (StartingInput != 'A' && StartingInput != 'B' && StartingInput != 'C') {
+        do {
             cout << "Errrr buddy. You have to pick one of the options I give you.\n";
             cin >> StartingInput;
-        }while(StartingInput != 'A' && StartingInput != 'B' && StartingInput != 'C');
+        } while (StartingInput != 'A' && StartingInput != 'B' && StartingInput != 'C');
     }
-    
-    
-//starting point in story tree: 'A' the player will go into battle, 'B' the player will check and fight or flee, 'C' the player will loot the castle and flee(the smart choice)(duh)
+
+
+    //starting point in story tree: 'A' the player will go into battle, 'B' the player will check and fight or flee, 'C' the player will loot the castle and flee(the smart choice)(duh)
     bool CorrectChoice = true;
-    do{
-        switch(StartingInput){
-            case 'A':
-                CorrectChoice = false;
-                char GearInput;
-                cout << "CONGRAGULATIONS! You have chosen correctly. \nAs you enter the armoury you see a wide selection of weapons and armour. You can only carry a certain amount of gear so you much choose carefully.\n";
-                cout << "What will be your loadout?\n";
-                cout << "(A) Sword and Shield with a full set of Armour.(Armour +100 / Damage +100 / Weight +100)\n";
-                cout << "(B) Bow and Arrow with light armour------------(Armour +20 / Damage +35 / Weight +15)\n";
-                cout << "(C) Bring the Bticky for when it gets Sticky---(Armour 0 / Damage ??? / Weight +5)\n";
-                cin >> GearInput;
-                /*  if(GearInput == 'A'){
-                 cout << "Your equipment's heavy weight pervents you riding a horse to the dragon. Your journey took 10 days(seconds).\n";
-                 this_thread::sleep_for(chrono::seconds(10));
-                 cout << "10 Days have passed. READY UP!\n";
-                 cout <<
-                 }else if(GearInput == 'B' || GearInput == 'C'){
-                 cout << "Your equipment's light weight allows you to ride a horse to the dragons location within a reasonable time(smart thinking).\n";
-                 }
-                 */
-                
-                break;
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-            case 'B':
-                CorrectChoice = false;
+    do {
+        switch (StartingInput) {
+        case 'A':
+            CorrectChoice = false;
+            char GearInput;
+            cout << "CONGRAGULATIONS! You have chosen correctly. \nAs you enter the armoury you see a wide selection of weapons and armour. You can only carry a certain amount of gear so you much choose carefully.\n";
+            cout << "What will be your loadout?\n";
+            cout << "(A) Sword and Shield with a full set of Armour.(Armour +100 / Damage +100 / Weight +100)\n";
+            cout << "(B) Bow and Arrow with light armour------------(Armour +20 / Damage +35 / Weight +15)\n";
+            cout << "(C) Bring the Bticky for when it gets Sticky---(Armour 0 / Damage ??? / Weight +5)\n";
+            cin >> GearInput;
+              if(GearInput == 'A'){
+             cout << "Your equipment's heavy weight pervents you riding a horse to the dragon. Your journey took 7 days(seconds).\n";
+             this_thread::sleep_for(chrono::seconds(7));
+             cout << "...7 Days have passed. READY UP!\n";
+             
+             }else if(GearInput == 'B' || GearInput == 'C'){
+             cout << "Your equipment's light weight allows you to ride a horse to the dragons location within a reasonable time(smart thinking).\n";
+             }
+             cout << "You make it to the dragon's lair. Are you going in loud or silent?\n";
+             cout << "(A) LOUD\n";
+			 cout << "(B) silent\n";
+			 char approachInput;
+			 cin >> approachInput;
+             if (approachInput == 'A') {
+                 cout << "Well that was stupid. Did you think you could take a dragon head on? You are dead.\n";
+             }else if (approachInput == 'B') {
+				 if (GearInput == 'A') {
+					 cout << "You sneak towards but your armour makes a lot of noise. The dragon hears you and kills you. You are dead.\n";
+				 }
+                 else if (GearInput == 'B') {
+                     cout << "You draw your bow and release the arrow. Your aim is true and the arrow heads straight towards the dragons heart. Unfortunately the dragon's skin is impermeable to weak ahh weapons. You are dead.\n";
+                     
+				 }else if (GearInput == 'C') {
+					 cout << "You successfully approach the dragon and unload the clip onto that foo. Congragulations you made the correct choice and slayed the dragons. Once you slay the dragon you remove its heart and take it to the emperium and get hella BJs.\n";
+				 }
+            break;
 
-                break;
-            case 'C':
-                CorrectChoice = false;
+        case 'B':
+            CorrectChoice = false;
+			cout << "You head towards the Imperial General's chambers. As you enter you see and ask him of the current state of the situation.\n";
+			cout << "He says the dragon has obliterated half of the kings army and things are not looking good. \n";
+			cout << "Whats your next move?\n";
+			cout << "(A) Ask the General for the rest of the army to confront the dragon\n";
+			cout << "(B) Sneak into royal quarters to see if you can find any valueables\n";
+			char BnextInput;
+			if (BnextInput == 'A') {
+                cout << "The general denys your request. What is your next move?\n";
+				cout << "(A) Kill the General and take the army to battle\n";
+				cout << "(B) Leave alone to confront the dragon\n";
+                char doesntdonothing;
+				cin >> doesntdonothing;
+                if (doesntdonothing == 'A') {
+                    cout << "You successfully kill the general and take command of the army. You charge to the dragons lair.\nOnce You arrive your army is immediately slaughtered. You are dead.\n";
+				}
+				else if (doesntdonothing == 'B') {
+					cout << "You head towards the dragons lair(Without weapons cuz your stupid APPERANTLY. As you apporach the mouth of the dragons lair you feel a wave of heat behind you. As you turn around you see the dragon standing directly behind you. You are dead.\n";
+					}
+				}
+            else if (BnextInput == 'B') {
+				StartingInput = 'C';
+            }
+            break;
+        case 'C':
+            CorrectChoice = false;
+			cout << "Congraguations you chose the most immoral option. Shitty but smart.\n";
 
-                
-                break;
-            default:
-                cout << "Come on bruh we already went through this... Pick again.\n";
+            break;
+        default:
+            cout << "Come on bruh we already went through this... Pick again.\n";
+            break;
+        }
+    } while (CorrectChoice);
 
-            break;}
-    }while(CorrectChoice);
-    
-           
+
     return 0;
 }
 
@@ -91,7 +118,7 @@ int main(){
 
  At least three major decision
  points where the player must choose between two or more options
- 
+
  At least two different possible endings,
  depending on the choices the player makes
  Navigation or Choices
@@ -122,10 +149,10 @@ int main(){
  Submit the following:
 
  Your completed .cpp file.
- 
+
  ----------------------------------------------
  Overview
 
  In this assignment, you will design and implement a simple text-based adventure game. The goal is to create an interactive story where the user makes choices that influence the direction and outcome of the game. The setting can be anything you like — a haunted house, a fantasy world, a science lab, or even a day in the life of a student. The important part is that player decisions matter and lead to different paths and outcomes.
- 
+
  */

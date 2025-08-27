@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std
+
+int main() {
+int smallFish = 0;
+int mediumFish = 0;
+int largeFish = 0;
+double totalFishFeed = 0;
+int userMenuInput = 0;
+
+//temp values created to be able to add fishes to previous count
+int tempSmallValue = 0;
+int tempMediumValue = 0;
+int tempLargeValue = 0;
+
+do {
+userMenuInput = 0;
+cout << "Welcome to the Aquarium's Fish Tracking program!" << endl;
+cout << "Type '1' to modify the fish population." << endl;
+cout << "Type '2' to print fish population." << endl;
+cout << "Type '3' to print fish feeding information." << endl;
+cout << "Type '4' to exit the program." << endl;
+cin >> userMenuInput;
+
+
+switch (userMenuInput) {
+
+case 1: //modify the fish population
+cout << "How many small fish are in the aquarium" << endl;
+cin >> tempSmallValue;
+smallFish = tempSmallValue + smallFish;
+cout << "How many medium fish are in the aquarium" << endl;
+cin >> tempMediumValue;
+mediumFish = tempMediumValue + mediumFish;
+cout << "How many large fish are in the aquarium" << endl;
+cin >> tempLargeValue;
+largeFish = tempLargeValue + largeFish;
+break;
+
+case 2: //print fish population
+if (smallFish == 0 && mediumFish == 0 && largeFish == 0) {
+cout << "There are no fish in the aquarium" << endl;
+}
+else {
+cout << "There are " << smallFish << " small fish" << endl;
+cout << "There are " << mediumFish << " medium fish" << endl;
+cout << "There are " << largeFish << " large fish" << endl;
+}
+break;
+
+case 3: //print fish feeding information
+totalFishFeed = (smallFish * 0.12) + (mediumFish * 0.4) + (largeFish * 1.2);
+cout << "The fish require " << totalFishFeed << " of feed." << endl;
+break;
+
+case 4:
+cout << "You have successfully exited the program." << endl;
+break;
+
+default:
+cout << "Invalid input." << endl;
+break;
+}
+} while (userMenuInput != 4);
+
+return 0;
+}

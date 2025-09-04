@@ -1,0 +1,128 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
+using namespace std;
+
+void initializeFile();
+double calculateCost();
+
+int main(){
+    cout << "Welcome to the construction materials transport program!\n";
+    //step one step one step one
+    void initializeFile();
+
+    //step two step two step two
+    int userMaterialChoice;
+    cin >> userMaterialChoice;
+    switch (userMaterialChoice) {
+        case 1: //timber 33.7%
+         
+            break;
+        case 2: //plywood 33.7%
+       
+            break;
+        case 3: //steel 3.5%
+            
+            break;
+        case 4: //aluminum do nothing
+            break;
+        case 5: //nails 3.5%
+        
+            break;
+        default:
+            break;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    return 0;
+}
+
+void initializeFile() { //function definition
+
+    ofstream outStream("Inventory.txt");
+
+    int matList[5] = { 5, 12, 8, 15, 5 };
+
+    for (int i{ 0 }; i < 5; i++) {
+        outStream << matList[i] << endl;
+    }
+
+    outStream.close();
+}
+
+double calculateCost(int userMaterialChoice, int userMaterialAmount, int userMaterialDestination){
+    cout << "Select material for transportation: " << endl;
+    cin >> userMaterialChoice;
+    switch (userMaterialChoice) {
+        case 1: //timber 33.7%
+            
+            break;
+        case 2: //plywood 33.7%
+       
+            break;
+        case 3: //steel 3.5%
+            
+            break;
+        case 4: //aluminum do nothing
+            break;
+        case 5: //nails 3.5%
+        
+            break;
+        default:
+            break;
+    }
+    cout << "Select amount of material for transportation: " << endl;
+    cin >> userMaterialAmount;
+    
+    cout << "Select a destination for transportation: " << endl;
+    cin >> userMaterialDestination;
+    
+    int totalCost = 0;
+    switch(userMaterialDestination){
+        case 1: // Bank timber 33.7%
+            userMaterialDestination = 20;
+            totalCost = userMaterialDestination * userMaterialAmount;
+            break;
+        case 2: // Playground plywood 33.7%
+            userMaterialDestination = 10;
+            totalCost = userMaterialDestination * userMaterialAmount;
+            break;
+        case 3: //Cemetery steel 3.5%
+            userMaterialDestination = 12;
+            totalCost = userMaterialDestination * userMaterialAmount;
+
+            break;
+        case 4: //Rec Center aluminum do nothing
+            userMaterialDestination = 8;
+            totalCost = userMaterialDestination * userMaterialAmount;
+            totalCost
+            break;
+    
+        default:
+            break;
+    }
+    return 0;
+}
+
+
+/*
+ //step one step one step one
+ string materialArray[5] = {"Timber", "Plywood", "Steel", "Aluminum", "Nails" };
+ double materialAmountArray[5] = {0,0,0,0,0};
+ fstream myFile;
+ myFile.open("Inventory.txt", ios::out); //out = outpput from program to text file
+ if(myFile.is_open()){
+     
+     for(int i = 0; i < size(materialArray); i++)
+         myFile << materialArray[i] << ": " << materialAmountArray[i] << " lbs.\n";
+     myFile.close();
+ }
+ 
+ */

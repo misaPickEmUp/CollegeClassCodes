@@ -10,6 +10,7 @@ int createAFunction(int intergerProvided);
 int main(){
     
     //step one step one step one
+    cout << "Welcome to the construction materials managment program!\n";
     string materialArray[5] = {"Timber", "Plywood", "Steel", "Aluminum", "Nails" };
     double materialAmountArray[5] = {0,0,0,0,0};
     fstream myFile;

@@ -1,0 +1,89 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iterator>
+using namespace std;
+
+//step two step two step two
+int createAFunction(int intergerProvided);
+
+int main(){
+    
+    //step one step one step one
+    string materialArray[5] = {"Timber", "Plywood", "Steel", "Aluminum", "Nails" };
+    double materialAmountArray[5] = {0,0,0,0,0};
+    fstream myFile;
+    myFile.open("Inventory.txt", ios::out); //out = outpput from program to text file
+    if(myFile.is_open()){
+        
+        for(int i = 0; i < size(materialArray); i++)
+            myFile << materialArray[i] << ": " << materialAmountArray[i] << " lbs.\n";
+        myFile.close();
+    }
+    
+    //step two step two step two
+    int userChoice;
+    createAFunction(userChoice);
+    
+    
+    //step three step three step three
+    cout << "Select an amount to buy!\n";
+    int userAmountChoice;
+    cin >> userAmountChoice;
+    
+    int totalAmount;
+    
+    switch(userAmountChoice){
+        case 1:
+            totalAmount = userAmountChoice * 12;
+            break;
+        case 2:
+            totalAmount = userAmountChoice * 10;
+            break;
+        case 3:
+            totalAmount = userAmountChoice * 18;
+            break;
+        case 4:
+            totalAmount = userAmountChoice * 22;
+            break;
+        case 5:
+            totalAmount = userAmountChoice * 10;
+            break;
+    }
+    
+    materialArray[userChoice] =totalAmount;
+    myFile.open("Inventory.txt", ios::out); //out = outpput from program to text file
+    if(myFile.is_open()){
+        for(int i = 0; i < size(materialArray); i++)
+            myFile << materialArray[i] << ": " << materialAmountArray[i] << " lbs.\n";
+        myFile.close();
+    }
+    
+    
+    
+    
+    return 0;
+}
+//step two step two step two
+int createAFunction(int intergerProvided){
+    cout << "Please select a material to buy!\n";
+    cin >> intergerProvided;
+    switch(intergerProvided){
+        case 1:
+            cout << "You selected Timber" << endl;
+            break;
+        case 2:
+            cout << "You selected Plywood" << endl;
+            break;
+        case 3:
+            cout << "You selected Steel" << endl;
+            break;
+        case 4:
+            cout << "You selected Aluminum" << endl;
+            break;
+        case 5:
+            cout << "You selected Nails" << endl;
+            break;
+    }
+    return 0;
+};

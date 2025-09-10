@@ -1,0 +1,97 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+void printDataBase(vector<string> userNameList);
+void addUserName(vector<string>& userNameList);
+void removeUserName(vector<string>& userNameList);
+
+int main() {
+	vector<string> userNameList;
+	bool ExitProgram = false;
+	do {
+		cout << "Please select an option: " << endl;
+		cout << "(1) Print current username list" << endl;
+		cout << "(2) Add new username to the list" << endl;
+		cout << "(3) Remove username from list" << endl;
+		cout << "(4) Exit Program" << endl;
+
+		int userInput;
+		cin >> userInput;
+		switch (userInput) {
+		case 1:
+			printDataBase(userNameList);
+			break;
+		case 2:
+			addUserName(userNameList);
+			break;
+		case 3:
+			removeUserName(userNameList);
+			break;
+		case 4:
+			cout << "Now exiting the program." << endl;
+			ExitProgram = true;
+			break;
+		}
+	} while (!ExitProgram);
+
+	return 0;
+}
+
+void printDataBase(vector<string> userNameList) {
+	
+	if (userNameList.empty()) {
+		cout << "There are no usernames stored in the system." << endl;
+	}
+	else {
+		for (int i = 0; i < userNameList.size(); i++) {
+			cout << "Name: " << userNameList[i] << endl;
+		}
+
+	}
+
+}
+
+void addUserName(vector<string>& userNameList) {
+	string userNameInput;
+	cout << "Please add a name to the list(15 Characters or less): " << endl;
+	cin >> userNameInput;
+	if (userNameInput.size() > 15) {
+		cout << "Username entered not valid.";
+	}
+	else {
+		if (userNameList.capacity() <= userNameList.size()) {
+			userNameList.reserve(userNameList.capacity() == 0 ? 1 : userNameList.capacity() * 2);
+		}
+        userNameList.push_back(userNameInput);
+		cout << userNameInput << " was added to the list." << endl;
+	}
+	if (userNameList.empty()) {
+		cout << "There are no usernames stored in the system." << endl;
+	}
+}
+
+void removeUserName(vector<string>& userNameList) {
+	if (userNameList.empty()) {
+		cout << "There are no usernames stored in the system." << endl;
+	}
+	else {
+		cout << "Enter name to be removed: " << endl;
+		string userRemovalInput;
+		cin >> userRemovalInput;
+		//for (int i = 0; i < userNameList.size(); i++) {
+			if (find(userNameList.begin(), userNameList.end(), userRemovalInput) != userNameList.end()) {
+				cout << "Username found!" << endl;
+				userNameList.erase(remove(userNameList.begin(), userNameList.end(), userRemovalInput), userNameList.end());
+				cout << "Username was removed from the list." << endl;
+			}
+			else {
+				cout << "Input was not found." << endl;
+			}
+		//}
+	}
+}
+	
+

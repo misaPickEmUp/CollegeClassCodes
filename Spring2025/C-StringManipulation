@@ -1,0 +1,174 @@
+#include <iostream>
+#include <string>
+#include <string.h>
+#include <cstdlib>
+#include <cctype>
+using namespace std;
+
+void Concatenate1(const char str1[16], const char str2[16]);
+void Concatenate2(const char str1[16], const char str2[16]);
+void CompareStrings(char str1[16], char str2[16]);
+void StringtoInt(char str1[16]);
+
+int main() {
+	bool ExitProgram = false;
+	char str1[16];
+	char str2[16];
+	bool morethen15 = false;
+	bool morethen15again = false;
+
+
+	do {
+		morethen15 = false;
+		cout << "Enter 2 strings: (Limit 15 Characters)" << endl;
+		cout << "Enter your first string: " << endl;
+		cin.getline(str1, 16);
+		if (cin.fail()) {
+			morethen15 = true;
+			cin.clear();
+			cin.ignore(10000, '\n');
+		}
+		cout << "Enter your Second string: " << endl;
+		cin.getline(str2, 16);
+		if (cin.fail()){
+			morethen15 = true;
+			cin.clear();
+			cin.ignore(10000, '\n');
+		}
+		if (morethen15) {
+			cout << "One or more of the values entered are more then 15 characters, try again" << endl;
+		}
+		else {
+			cout << "The strings entered were " << str1 << " and " << str2 << endl << endl;
+		}
+
+	} while (morethen15);
+	
+	int ranOnce = 0;
+	do {
+		if (ranOnce > 0) {
+			cout << "The current strings are " << str1 << " and " << str2 << endl;
+		}
+		ranOnce++;
+
+
+
+		cout << "Please select an evaluation option: " << endl;
+		cout << "[1] Concatenate strings fully" << endl;
+		cout << "[2] Concatenate strings partially" << endl;
+		cout << "[3] Compare both strings" << endl;
+		cout << "[4] Convert first string to integer (only numbers!)" << endl;
+		cout << "[5] Reenter string names" << endl;
+		cout << "[6] Exit" << endl;
+		int userChoice;
+		if (!(cin >> userChoice)) {
+			cin.clear(); 
+			cin.ignore(10000, '\n');
+			userChoice = -1;
+		}
+		else {
+			cin.ignore(10000, '\n');
+		}
+
+		switch (userChoice) {
+		case 1:
+			Concatenate1(str1, str2);
+			break;
+		case 2:
+			Concatenate2(str1, str2);
+			break;
+		case 3:
+			CompareStrings(str1, str2);
+			break;
+		case 4:
+			StringtoInt(str1);
+			break;
+		case 5:
+
+			do {
+				morethen15again = false;
+				cout << "Enter 2 strings: (Limit 15 Characters)" << endl;
+				cout << "Enter your first string: " << endl;
+
+
+				cin.getline(str1, 16);
+				if (cin.fail()) {
+					morethen15again = true;
+					cin.clear();
+					cin.ignore(10000, '\n');
+				}
+				cout << "Enter your Second string: " << endl;
+				cin.getline(str2, 16);
+				if (cin.fail()) {
+					morethen15again = true;
+					cin.clear();
+					cin.ignore(10000, '\n');
+				}
+				if (morethen15again) {
+					cout << "One or more of the values entered are more then 15 characters, try again" << endl;
+				}
+				else {
+					cout << "The strings entered were " << str1 << " and " << str2 << endl << endl;
+				}
+
+			} while (morethen15again);
+			break;
+		case 6:
+			cout << "You have exited the program, goodbye!" << endl;
+			ExitProgram = true;
+			break;
+		default:
+			cout << "Please select valid option" << endl;
+			break;
+		}
+
+
+	} while (!ExitProgram);
+
+	return 0;
+}
+
+void Concatenate1(const char str1[16], const char str2[16]) {
+	char result[32];
+	if (strlen(str1) + strlen(str2) <= 32) {
+		strcpy_s(result, str1);
+		strcat_s(result, str2);
+		cout << "The full concateanation of the strings is: " << result << endl;
+	}else{
+		cout << "The strings could not be safely concatenated" << endl;
+	}
+
+}
+
+void Concatenate2(const char str1[16], const char str2[16]) {
+	char result[32];
+	strcpy_s(result, str1); 
+	size_t halfOf = strlen(str2) / 2;
+
+	strncat_s(result, sizeof(result), str2, halfOf);
+	cout << "The partial concateanation of the strings is: " << result << endl;
+
+}
+
+void CompareStrings(char str1[16], char str2[16]) {
+
+	if (strcmp(str1, str2) == 0) {
+		cout << "The strings " << str1 << " and " << str2 << " are the same" << endl;
+	}
+	else {
+		cout << "The strings " << str1 << " and " << str2 << " are not the same" << endl;
+	}
+}
+
+void StringtoInt(char str1[16]) {
+    char digits[16] = {0}; 
+    int idx = 0;
+    for (int i = 0; str1[i] != '\0'; ++i) {
+        if (isdigit(static_cast<unsigned char>(str1[i]))) {
+            digits[idx++] = str1[i];
+        }
+    }
+    int value = atoi(digits);
+    cout << str1 << " converted into an integer is " << value << endl;
+    cout << str1 << "'s integer value multiplied by 2 is " << value * 2 << endl;
+}

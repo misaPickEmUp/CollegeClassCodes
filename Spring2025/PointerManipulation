@@ -1,0 +1,123 @@
+#include <iostream>
+#include <string>
+using namespace std;
+typedef int* GlobalInt;
+
+void assignPointerVar(GlobalInt& IntPtr);
+void displayPtrAssign(GlobalInt& IntPtr, GlobalInt& IntPtr2);
+void createDynaArrynDis();
+void createMultiDimDynaArraynDis();
+
+int main() {
+	
+	int *assPtrVar1 = new int;
+	assignPointerVar(assPtrVar1);
+	int* assPtrVar2 = new int;
+	assignPointerVar(assPtrVar2);
+
+	displayPtrAssign(assPtrVar1, assPtrVar2);
+	
+	createDynaArrynDis();
+	
+	createMultiDimDynaArraynDis();
+
+
+
+
+
+	delete assPtrVar1; // no(delete assPtrVar2;) needed since line 46 IntPtr = IntPtr2, you only need to delete one
+
+	cout << "End of program.";
+	return 0;
+}
+
+void assignPointerVar(GlobalInt& IntPtr) {
+	int userArrayValue;
+	int NewuserArrayValue;
+	cout << "Please enter a value to assign to a pointer: " << endl;
+	cin >> userArrayValue;
+	IntPtr = new int(userArrayValue);
+	cout << "Pointer now points to the value " << *IntPtr << " at memory address " << IntPtr << endl;
+}
+
+void displayPtrAssign(GlobalInt& IntPtr, GlobalInt& IntPtr2){
+	cout << "*P1 == " << *IntPtr << endl;
+	cout << "*P2 == " << *IntPtr2 << endl;
+	IntPtr = IntPtr2;
+	cout << "*P1 == " << *IntPtr << endl;
+	cout << "*P2 == " << *IntPtr2 << endl;
+
+	cout << "Please enter a value to replace for the first pointer: " << endl;
+	cin >> *IntPtr;
+	cout << "*P1 == " << *IntPtr << endl;
+	cout << "*P2 == " << *IntPtr2 << endl;
+
+	cout << "Please enter a value to replace for the second pointer: " << endl;
+	int anotherValue;
+	cin >> anotherValue;
+	IntPtr2 = &anotherValue;
+	cout << "*P1 == " << *IntPtr << endl;
+	cout << "*P2 == " << *IntPtr2 << endl;
+
+}
+
+void createDynaArrynDis() {
+
+	cout << "String array evaluation: " << endl;
+	cout << "Please enter the number of strings you'd like to write: " << endl;
+	int amtOfStrings;
+	cin >> amtOfStrings;
+	cin.ignore();
+
+	string* DynaArray = new string[amtOfStrings]; //is this a relic of C? because i dont see what this achieves that a vector wouldnt
+	for (int i = 0; i < amtOfStrings; i++) {
+		cout << "Please enter string #" << i + 1 << ":" << endl;
+		getline(cin, DynaArray[i]);
+	}
+	cout << "The strings your entered are:" << endl;
+	for (int j = 0; j < amtOfStrings; j++) {
+		 cout << DynaArray[j] << endl;
+	}
+	delete[] DynaArray;
+}
+
+void createMultiDimDynaArraynDis() {
+
+	cout << "Integer array evaluation: " << endl;
+	cout << "Please enter the inner dimension of the array : " << endl;
+	int firstDimen;
+	cin >> firstDimen;
+	cout << "Please enter the outer dimension of the array : " << endl;
+	int secondDimen;
+	cin >> secondDimen;
+
+	int** MultiDynaArray = new int*[firstDimen];
+	for (int j = 0; j < firstDimen; j++) {
+		MultiDynaArray[j] = new int[secondDimen];
+	}
+
+
+	for (int j = 0; j < firstDimen; j++) {
+		for (int k = 0;k < secondDimen; k++) {
+		cout << "Please enter a value: " << endl;
+		cin >> MultiDynaArray[j][k];
+
+		}
+	}
+
+
+	cout << "The values you entered are: ";
+	for (int j = 0; j <  firstDimen; j++) {
+		cout << endl;
+		for (int k = 0; k < secondDimen; k++) {
+			cout << MultiDynaArray[j][k] << " ";
+		}
+	}
+
+	for (int j = 0; j < firstDimen; j++) {
+		delete[] MultiDynaArray[j];
+		}
+	
+	delete[] MultiDynaArray;
+	cout << endl;
+}

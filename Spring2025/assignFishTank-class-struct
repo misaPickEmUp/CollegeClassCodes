@@ -1,0 +1,191 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+struct Fish {
+	string Fnames;
+	string Fsizes;
+	int Fcount;
+	//vector<string> fishNames; //string fishSizes[3] = {"Small", "Medium", "Large"}; //int fishCounts;
+};
+
+void printFishPopulation(vector<Fish>tankFish);
+void registerFishPopulation(vector<Fish>&);
+void removeFishPop(vector<Fish>& tankFish);
+void moveToMainTank(vector<Fish>& mainTank);
+
+class Tank {
+private:
+	vector<Fish> tankFish;
+public:
+	vector<Fish>& getTankFish() { return tankFish; }
+	void printFishPopulation() {
+		if (tankFish.empty()) {
+			cout << "The tank is empty" << endl;
+			return;
+		}
+		for (const auto& fish : tankFish) {
+			cout << fish.Fnames << " - Pop: " << fish.Fcount << " - Size: " << fish.Fsizes << endl;
+			cout << "------------------------------" << endl;
+		}
+	}
+	void registerFishPopulation() {
+		string nameF;
+		char simpSize;
+		string sizeF;
+		int countF;
+		int tryagain = 0;
+		cout << "What is the name of the new fish?" << endl;
+		cin >> nameF;
+		do {
+			if (tryagain > 0) {
+				cout << "Invalid input entered, try again. " << endl;
+			}
+			tryagain++;
+			cout << "What is the size of the new fish?(S/M/L)" << endl;
+			cin >> simpSize;
+			cin.ignore();
+
+		} while (simpSize != 'S' && simpSize != 'M' && simpSize != 'L');
+		switch (simpSize) {
+		case 'S':
+			sizeF = "Small";
+			break;
+		case 'M':
+			sizeF = "Medium";
+			break;
+		case 'L':
+			sizeF = "Large";
+			break;
+		default:
+			break;
+		}
+		cout << "How many fishes are being added to the aquarium" << endl;
+		cin >> countF;
+		tankFish.push_back({ nameF, sizeF, countF });
+	}
+
+	void moveToMainTank(vector<Fish>& mainTank) {
+		if (tankFish.empty()) {
+			cout << "Transfer could not take place: Holding Tank is empty." << endl;
+			return;
+		}
+		// Transfer all fish to mainTank
+		mainTank.insert(mainTank.end(), tankFish.begin(), tankFish.end());
+		tankFish.clear();
+		cout << "Transfer completed: All fish moved to the Tank." << endl;
+	}
+
+};
+
+class DeepTank : public Tank {
+private:
+	int depth;
+public:
+	DeepTank(int d) : depth(d) {}
+
+	void printDepth() const {
+		cout << "Tank depth: " << depth << " meters" << endl;
+	}
+};
+
+int main() {
+	Tank holdingTank;
+	Tank mainTank;
+	DeepTank LargeTank(100);
+	bool exitProgram = false;
+
+
+	do {
+		int userChoice;
+		cout << "[1] Print currecnt Incoming Fish" << endl;
+		cout << "[2] Register an Incoming Fish" << endl;
+		cout << "[3] Remove an Incoming Fish" << endl;
+		cout << "[4] Place Incoming Fish in Tank" << endl;
+		cout << "[5] Print Tank Population" << endl;
+		cout << "[6] Display Deep Tank Depth" << endl;
+		cout << "[7] Exit" << endl;
+		cin >> userChoice;
+		switch (userChoice) {
+		case 1:
+			holdingTank.printFishPopulation();
+			break;
+		case 2:
+			holdingTank.registerFishPopulation();
+			break;
+		case 3:
+			removeFishPop(holdingTank.getTankFish());
+			break;
+		case 4:
+			int userChoice2;
+			cout << "Where would you like to move the fish into?" << endl;
+			cout << "[1] Move to main tank" << endl;
+			cout << "[2] Move to deep tank" << endl;
+			cin >> userChoice2;
+				switch (userChoice2) {
+				case 1:
+					holdingTank.moveToMainTank(mainTank.getTankFish());
+					break;
+				case 2:
+					holdingTank.moveToMainTank(LargeTank.getTankFish());
+					break;
+				}
+			break;
+		case 5:
+			int userChoice3;
+			cout << "Which tank would you like to view?" << endl;
+			cout << "[1] Display main tank" << endl;
+			cout << "[2] Display deep tank" << endl;
+			cin >> userChoice3;
+			switch (userChoice3) {
+			case 1:
+				mainTank.printFishPopulation();
+				break;
+			case 2:
+				LargeTank.printFishPopulation();
+				break;
+			}
+			break;
+		case 6:
+			LargeTank.printDepth();
+			break;
+		case 7:
+			exitProgram = true;
+			break;
+		default:
+			break;
+		}
+
+
+
+	} while (!exitProgram);
+	return 0;
+}
+
+void removeFishPop(vector<Fish>& tankFish) {
+	if (tankFish.empty()) {
+		cout << "There are no fishies in the tank" << endl;
+		return;
+	}
+
+	cout << "Which fish would you like to remove?" << endl;
+	for (size_t i = 0; i < tankFish.size(); i++) {
+		cout << tankFish[i].Fnames << endl;
+	}
+
+	string fishtoRemove;
+	cin >> fishtoRemove;
+
+	for (size_t j = 0; j < tankFish.size(); j++) {
+		if (tankFish[j].Fnames == fishtoRemove) {
+			tankFish.erase(tankFish.begin() + j);
+			//tankFish[j].Fnames.erase();
+			//tankFish[j].Fsizes.erase();
+			//tankFish[j].Fcount = 0;
+			cout << fishtoRemove << " was removed from the tank." << endl;
+			return;
+		}
+	} 
+	cout << fishtoRemove << " could not be removed from the tank." << endl;
+}

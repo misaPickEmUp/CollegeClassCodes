@@ -1,2 +1,2 @@
 # CollegeClassCodes
-Just the codes I've written in class
+Just the codes I've written in class'
